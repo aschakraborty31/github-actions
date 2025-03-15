@@ -10,7 +10,7 @@ metadata:
 spec:
   type: team
   profile:
-    displayName: CUS - CRMP SQUAD
+    displayName: CUS-CRMP SQUAD
     email: ashesh.chakraborty@hyland.com
     picture: ./example.jpeg
   parent: FCC CUS
