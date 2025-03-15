@@ -20,4 +20,4 @@ metadata:
 spec:
   type: website
   owner: Ashesh Chakraborty
-  lifecycle: production
+  lifecycle: experimental
