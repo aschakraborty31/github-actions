@@ -1,1 +1,18 @@
-
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: CRMP SQUAD
+  description: |
+    This is Content Repo Module Package group
+  links:
+    - title: JiraBoard
+      url: https://hyland.atlassian.net/jira/software/c/projects/FCCSEU/boards/4753?quickFilter=19706
+spec:
+  type: team
+  profile:
+    displayName: CUS - CRMP SQUAD
+    email: ashesh.chakraborty@hyland.com
+    picture: ./example.jpeg
+  parent: FCC CUS
+  children: [backstage, other]
+  members: [ashesh, jdoe]
