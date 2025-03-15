@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Deficiency Pop
+  name: Deficiency_Pop
   description: |
     Defpop is an application to manage the deficiencies by the physicians.
   links:
