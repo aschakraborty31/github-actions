@@ -8,17 +8,5 @@ spec:
   lifecycle: local
   owner: CRMP_SQUAD
   system: CUS-Orchestrator
-  definition: |
-    openapi: "3.0.0"
-    info:
-      version: 1.0.0
-      title: Orchestrator API
-      license:
-        name: MIT
-    servers:
-      - url: http://localhost:5000/poll
-    paths:
-      /brokerid:
-        post:
-          summary: List all artists
-    ...
+  definition:
+    $text: 'https://github.com/aschakraborty31/github-actions/blob/main/feature.swagger.json'
