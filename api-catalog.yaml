@@ -1,24 +1,24 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: artist-api
-  description: Retrieve artist details
+  name: orchestrator-endpoint
+  description: Retrieve workitems
 spec:
   type: openapi
-  lifecycle: production
+  lifecycle: local
   owner: CRMP_SQUAD
-  system: artist-engagement-portal
+  system: CUS-Orchestrator
   definition: |
     openapi: "3.0.0"
     info:
       version: 1.0.0
-      title: Artist API
+      title: Orchestrator API
       license:
         name: MIT
     servers:
-      - url: http://artist.spotify.net/v1
+      - url: http://localhost:5000/poll
     paths:
-      /artists:
-        get:
+      /brokerid:
+        post:
           summary: List all artists
     ...
