@@ -5,6 +5,7 @@
     "description": "API documentation for Orchestrator",
     "version": "v1"
   },
+  "host": "http://localhost:5000",
   "paths": {
     "/kubernetes/health": {
       "get": {
