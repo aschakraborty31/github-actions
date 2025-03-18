@@ -4,8 +4,6 @@ metadata:
   name: Deficiency_Pop
   description: |
     Defpop is an application to manage the deficiencies by the physicians.
-  annotations:
-    github.com/project-slug: aschakraborty31/github-actions
   links:
     - title: Website
       url: https://dp-reg-webser1.hylandqa.net/DeficiencyPop/Login.aspx
@@ -16,7 +14,7 @@ metadata:
     - title: Discord Chat
       url: https://discord.com/invite/EBHEGzX
   annotations:
-    github.com/project-slug: backstage/backstage
+    github.com/project-slug: aschakraborty31/github-actions
     backstage.io/techdocs-ref: dir:.
     lighthouse.com/website-url: https://backstage.io
 spec:
