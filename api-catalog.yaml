@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: orchestrator-endpoint
+  description: Retrieve workitems
+spec:
+  type: openapi
+  lifecycle: local
+  owner: CRMP_SQUAD
+  system: CUS-Orchestrator
+  definition:
+    $text: 'https://github.com/aschakraborty31/github-actions/blob/main/feature.swagger.json'

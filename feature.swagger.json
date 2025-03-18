@@ -1,0 +1,192 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Orchestrator API",
+    "description": "API documentation for Orchestrator",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "local server"
+    }
+  ],
+  "paths": {
+    "/kubernetes/health": {
+      "get": {
+        "tags": [
+          "Hyland.FCC.SEU.Orchestrator.Api"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/poll/{brokerId}": {
+      "post": {
+        "tags": [
+          "RetriveWorkItemsForBroker"
+        ],
+        "operationId": "RetriveWorkItemsForBroker",
+        "parameters": [
+          {
+            "name": "brokerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BrokerPollRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkItemDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BrokerPollRequestDto": {
+        "type": "object",
+        "properties": {
+          "workItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkItemRequestDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ErrorDetail": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WorkItemDto": {
+        "type": "object",
+        "properties": {
+          "workType": {
+            "type": "string",
+            "nullable": true
+          },
+          "appKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "workItemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "traceParent": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/WorkItemState"
+          },
+          "workData": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WorkItemRequestDto": {
+        "type": "object",
+        "properties": {
+          "workItemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "$ref": "#/components/schemas/WorkItemState"
+          },
+          "traceParentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorDetail"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WorkItemState": {
+        "enum": [0, 1, 2, 3, 4],
+        "type": "integer",
+        "format": "int32"
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "IDP access token. Example: \"Bearer {token}\"",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
+}
+ 
