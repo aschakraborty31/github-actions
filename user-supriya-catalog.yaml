@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: skundu
+spec:
+  profile:
+    displayName: Supriya Kundu
+    email: supriya.kundu@hyland.com
+    picture: https://example.com/staff/jenny-with-party-hat.jpeg
+  memberOf: [CRMP_SQUAD]
