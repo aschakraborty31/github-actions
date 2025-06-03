@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: Cloud Update Service
+  name: Cloud-Update-Service
   description: |
     This is Cloud Update Service Group
   links:
