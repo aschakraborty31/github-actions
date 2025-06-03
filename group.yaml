@@ -13,6 +13,6 @@ spec:
     displayName: CUS-CRMP SQUAD
     email: ashesh.chakraborty@hyland.com
     picture: ./example.jpeg
-  parent: FCC-CUS
+  parent: cloud-update-service
   children: [backstage, other]
   members: [ashesh, jdoe]
