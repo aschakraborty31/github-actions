@@ -2,6 +2,8 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: aschakraborty
+  annotations:
+    backstage.io/email: ashesh.chakraborty@hyland.com
 spec:
   profile:
     displayName: Ashesh Chakraborty
