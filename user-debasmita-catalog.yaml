@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: Debasmita
+  annotations:
+    github.com/user-id: '185880501'
+spec:
+  profile:
+    displayName: Debasmita Dashgupta
+    email: Debasmita.Dashgupta@hyland.com
+    picture: https://example.com/staff/jenny-with-party-hat.jpeg
+  memberOf: [TEAM_GATEWAY]
