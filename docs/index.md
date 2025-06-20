@@ -1,163 +1,150 @@
-# CUS Orchestrator API
+!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"dark")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()[Skip to main content](#__docusaurus_skipToContent_fallback)[](/)[GitHub](https://github.com/backstage/backstage)[Discord](https://discord.gg/backstage-687207715902193673)[Docs](/docs/overview/what-is-backstage)[Plugins](/plugins)[Blog](/blog)[Releases](/docs/releases/v1.40.0)[Demos](/demos)[Community](/community)[Stable](/docs/overview/what-is-backstage)- [Next](/docs/next/overview/what-is-backstage)
+- [Stable](/docs/overview/what-is-backstage)
 
-This project is a .Net API that manages the state of operations perfroms by the CUS Orchestrator.
+Search- [Overview](/docs/overview/what-is-backstage)[What is Backstage?](/docs/overview/what-is-backstage)[Architecture overview](/docs/overview/architecture-overview)[The Spotify Story](/docs/overview/background)[Vision](/docs/overview/vision)[Roadmap](/docs/overview/roadmap)[Security & Threat Model](/docs/overview/threat-model)[Release & Versioning Policy](/docs/overview/versioning-policy)
+- [What is Backstage?](/docs/overview/what-is-backstage)
+- [Architecture overview](/docs/overview/architecture-overview)
+- [The Spotify Story](/docs/overview/background)
+- [Vision](/docs/overview/vision)
+- [Roadmap](/docs/overview/roadmap)
+- [Security & Threat Model](/docs/overview/threat-model)
+- [Release & Versioning Policy](/docs/overview/versioning-policy)
+- [Getting Started](/docs/getting-started/)
+- [Core Features](/docs/auth/)
+- [Integrations](/docs/integrations/)
+- [Plugins](/docs/plugins/)
+- [Configuration](/docs/conf/)
+- [Framework](/docs/backend-system/)
+- [Tutorials](/docs/overview/adopting)
+- [FAQ](/docs/faq/)
+- [Contribute](/docs/contribute/)
+- [References](/docs/dls/design)
 
-# Orchestrator API Commands
+- [](/)
+- Overview
+- What is Backstage?
 
-This project writes data received from broker into database
+On this page# What is Backstage?
 
-# Orchestrator API Query
 
-This project reads data from database and passed it to broker
 
-# Orchestrator SQS Commands
- This project writes data received from tenant inventory into database
 
-# Orchestrator SQS Publishers
-This project publishes state changes through a SNS to tenant inventory
+Backstage is an open source framework for building developer
+portals. Powered by a centralized software catalog, Backstage restores order to
+your microservices and infrastructure and enables your product teams to ship
+high-quality code quickly — without compromising autonomy.
 
-# Orchestrator SQS Subscription
-This project subscribes to Tenant Inventory SNS 
 
-## Local Machine Setup
+Backstage unifies all your infrastructure tooling, services, and documentation
+to create a streamlined development environment from end to end.
 
-> [!IMPORTANT]
-> In order to pull dependencies for this project, you will need to enable pulling NuGet and Docker images from GitHub. Follow steps in the following document for configuration: 
-* [Authentication for GitHub Packages](https://hyland.atlassian.net/wiki/x/mhj3TQ)
-* [Authenctication for Hyland Experience Packages](https://hyland.atlassian.net/wiki/spaces/SEUTG/pages/2459009192/Development+Setup+Guide)
 
-Once that is completed, you should be able to run the following commands to build and test the project.
 
-```txt
-dotnet tool restore
-dotnet build
-docker compose up -d
-dotnet test
-```
+Out of the box, Backstage includes:
 
-### Additional Tools to Install
 
-* [AWS Toolkit](https://aws.amazon.com/visualstudio/) for Testing Lambda
-* [psql](https://www.postgresql.org/docs/current/app-psql.html) for running PostgresSQL terminal commands.
-* Postgres visual tool like [DBeaver](https://dbeaver.io/) or [PGAdmin](https://www.pgadmin.org/)
+- 
+Backstage Software Catalog for
+managing all your software (microservices, libraries, data pipelines,
+websites, ML models, etc.)
 
-## Integration Tests
 
-When running the integration tests locally, make sure you run `docker compose up` (pass the `-d` param for background.) to start the dependent services for the integration tests.
 
-Services that run: Postgres, Redis, [Mock IAM API](https://hyland.atlassian.net/wiki/spaces/SAASD/pages/1308033548/Use+the+IAM+API+Mock+Docker+image) (see [Authentication for GitHub packages](https://hyland.atlassian.net/wiki/spaces/HXP/pages/1308039322/Authentication+for+GitHub+Packages) to pull GitHub Docker images).
+- 
+Backstage Software Templates for
+quickly spinning up new projects and standardizing your tooling with your
+organization’s best practices
 
-## Database
 
-These steps expect the Postgres to be running via Docker. Use `docker compose up` to run with expected settings. The commands use the Postgres Docker image with the `psql` command to keep consistent with how the same commands are run in CI pipelines.
 
-The default local database name is `fccseu-orchestrator`. The `./.local/postgres/data` directory is expected to be present when using Docker.
+- 
+Backstage TechDocs for making it easy to
+create, maintain, find, and use technical documentation, using a "docs like
+code" approach
 
-### Create migrations
 
-Any time the entities are changed, new migrations for the containing DbContext must be run and checked into source.
 
-The migration script will create a class migrations and a SQL script which can be applied in CI pipelines. You will change relevant entities, update model creation logic and then run this command to make a new migration with the given name.
+- 
+Plus, a growing ecosystem of
+open source plugins
+that further expand Backstage’s customizability and functionality
 
-Note that any migration should be forwards compatible with the current version of the hosted service. This means destructive changes like renames or removals existing fields or tables need to follow a multi-phased approach to expand and contract the DB schema over multiple releases.
 
-> [!NOTE]  
-> You may need to change PowerShell to allow execution of the script.
-> `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
 
-```sh
- ./scripts/create-migration.ps1 -name MigrationName
-```
 
-### Apply local migrations
 
-This script will also ensure the database exists.
+## Backstage and the CNCF​
 
-#### From Docker
 
-No additional tools need to be installed for this command.
+Backstage is a CNCF Incubation project after graduating from Sandbox. Read the announcement
+here.
 
-```sh
-docker run -it --rm --volume "${PWD}:/var/app" postgres:latest /bin/bash -c "/var/app/scripts/migrate-database.sh"
-```
 
-#### From Bash
+![CNCF logo](https://backstage.io/img/cncf-white.svg)
+## Benefits​
 
-This will require `psql` is installed on the host machine.
 
-```sh
-./scripts/migrate-database.sh . "postgres://postgres:password@localhost:5432"
-```
+- 
+For engineering managers, it allows you to maintain standards and best
+practices across the organization, and can help you manage your whole tech
+ecosystem, from migrations to test certification.
 
-### Mock IAM API
 
-The [Mock IAM API](https://hyland.atlassian.net/wiki/spaces/SAASD/pages/1308033548/Use+the+IAM+API+Mock+Docker+image) is configured to run with Docker Compose. It can be used for integration and local manual testing.
 
-## Deployment
+- 
+For end users (developers), it makes it fast and simple to build software
+components in a standardized way, and it provides a central place to manage
+all projects and documentation.
 
-### Deployment to Dev and Staging
 
-This project follows mainline development and will deploy to `sandbox` upon merge to `main`. Once sandbox is successful a deployment to  `dev` and `staging` will then be triggered.
 
-### Feature Branch Deployment to Sandbox
+- 
+For platform engineers, it enables extensibility and scalability by letting
+you easily integrate new tools and services (via plugins), as well as
+extending the functionality of existing ones.
 
-Deployment to `sandbox` can be triggered by adding a `FEATUREDEPLOY` label to an open pull request. This will trigger the feature-branch-deploy workflow and push proposed changes for testing before merge to `main`.
 
-## Connecting to API Host
 
-Locally, you can connect to the `http://localhost:5000/index.html` to do a basic test.
+- 
+For everyone, it’s a single, consistent experience that ties all your
+infrastructure tooling, resources, standards, owners, contributors, and
+administrators together in one place.
 
-In hosted environments you can connect to the address specified by the API Gateway address. Refer to the deployment directory for this configuration.
 
-## DataDog Search
 
-After you've consumed API endpoints on the service, you can find relevant details in DataDog. Filter traces and logs using `fccseu-api` service.
 
-[Sandbox Traces](https://hxp.datadoghq.com/apm/traces?query=%40_top_level%3A1%20env%3Asandbox%20service%3Afccseu-api%20-%40http.route%3A%22%2Fkubernetes%2Fhealth%22)
 
-[Dev Traces](https://hxp.datadoghq.com/apm/traces?query=%40_top_level%3A1%20env%3Adev%20service%3Afccseu-api%20-%40http.route%3A%22%2Fkubernetes%2Fhealth%22)
+If you have questions or want support, please join our
+Discord chatroom.
 
-[Staging Traces](https://hxp.datadoghq.com/apm/traces?query=%40_top_level%3A1%20env%3Astaging%20service%3Afccseu-api%20-%40http.route%3A%22%2Fkubernetes%2Fhealth%22)
+[Edit this page](https://github.com/backstage/backstage/edit/master/docs/overview/what-is-backstage.md)[NextArchitecture overview](/docs/overview/architecture-overview)- [Backstage and the CNCF](#backstage-and-the-cncf)
+- [Benefits](#benefits)
 
-## Configuration
+- 
+                [
+                  
+                ](/)
 
-### Networking Configuration
+Docs- [What is Backstage?](/docs/overview/what-is-backstage)
+- [Getting started](/docs/getting-started/)
+- [Software Catalog](/docs/features/software-catalog/)
+- [Create a Plugin](/docs/plugins/create-a-plugin)
+- [Designing for Backstage](/docs/dls/design)
 
-The NetworkConfig class contains settings crucial for configuring the ForwardedHeadersOptions middleware, which handles headers forwarded by proxy servers.
+Community- [Support chatroom](https://discord.gg/backstage-687207715902193673)
+- [Contributing](https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md)
+- [Adopting](https://backstage.io/docs/getting-started/)
+- [Subscribe to our newsletter](https://info.backstage.spotify.com/newsletter_subscribe)
+- [CNCF Incubation](https://www.cncf.io/projects/)
 
-The NetworkConfig class contains the following properties:
+More- [GitHub](https://github.com/backstage/)
+- [Assets](https://github.com/cncf/artwork/tree/main/projects/backstage)
 
-```cs
-public class NetworkConfig
-{
-    public int TrustedHops { get; set; } = 2;
-    public string KnownNetwork { get; set; } = "127.0.0.1";
-    public int NetworkRange { get; set; } = 32;
-}
-```
+Made with ❤️ at Spotify
 
-#### Properties
+Copyright © 2025 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage
 
-| Property       | Type     | Description                                                                                       |
-|----------------|----------|---------------------------------------------------------------------------------------------------|
-| `TrustedHops`  | `int`    | Specifies the number of proxy hops to trust when forwarding headers. This setting is important in a network where requests pass through multiple layers before reaching your application. For example, an API Gateway counts as a proxy because it adds a forwarded header, the EKS Network Load Balancer (NLB) does not because it doesn't modify the headers, but NGINX does as it acts as another proxy. Therefore, if your application sits behind an API Gateway and an NGINX proxy, you would set TrustedHops to 2 to trust the headers from both proxies. |
-| `KnownNetwork` | `string` | Defines the IP address of a trusted network. This address is used to identify and trust traffic coming from specific network ranges. |
-| `NetworkRange` | `int`    | Defines the CIDR range of the known network. This range, in combination with `KnownNetwork`, specifies a subnet of trusted IP addresses. |
+[
 
-#### Example Configuration
-
-To configure these settings, add a Networking section to your appsettings.json file:
-
-```json
-{
-  "Networking": {
-    "TrustedHops": 2,
-    "KnownNetwork": "10.0.0.0",
-    "NetworkRange": 16
-  }
-}
-```# FCC SEU Contributing Guidelines
-
-Refer to the FCC SEU Confluence for Team Git Standards
-
-<https://hyland.atlassian.net/wiki/spaces/HFCH/pages/2467365893/Team+Git+Standards>
+const feedbackButton=document.createElement("feedback-button");feedbackButton.setAttribute("project","q8w1i6cair"),feedbackButton.setAttribute("modal-position","bottom-right"),feedbackButton.setAttribute("button-style","dark"),feedbackButton.setAttribute("button-position","bottom-right"),feedbackButton.setAttribute("hide-icon","true"),feedbackButton.setAttribute("custom-font","true"),feedbackButton.setAttribute("rating-mode","stars"),feedbackButton.setAttribute("id","default"),feedbackButton.textContent="Feedback",document.body.appendChild(feedbackButton)
+](https://www.linuxfoundation.org/trademark-usage)
