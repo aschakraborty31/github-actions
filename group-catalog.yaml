@@ -14,7 +14,7 @@ metadata:
     - title: Discord Chat
       url: https://discord.com/invite/EBHEGzX
   annotations:
-    github.com/project-slug: HylandExperience/fcc-seu-orchestrator
+    github.com/project-slug: HylandExperience/Hyland-Developers-Portal
     backstage.io/techdocs-ref: dir:.
     lighthouse.com/website-url: https://backstage.io
     datadoghq.com/dashboard-url: https://hxp.datadoghq.com/apm/home
