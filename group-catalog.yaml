@@ -18,6 +18,7 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     lighthouse.com/website-url: https://backstage.io
     datadoghq.com/dashboard-url: https://hxp.datadoghq.com/apm/home
+    jira.com/project-key: FCCSEU
 spec:
   type: website
   owner: CRMP_SQUAD
